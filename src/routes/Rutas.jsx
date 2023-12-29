@@ -5,6 +5,7 @@ import Operaciones from "../pages/Operaciones"
 import Balance from "../pages/Balance"
 import Retiro from "../pages/Retiro"
 import ReporteOperaciones from "../pages/ReporteOperaciones"
+import ErrorIngreso from "../pages/ErrorIngreso"
 
 const Rutas = () => {
     const rutas = useRoutes(
@@ -33,6 +34,10 @@ const Rutas = () => {
                 path: '/reporteDeOperaciones',
                 element: <ReporteOperaciones/>
             },
+            {
+                path: '/errorIngreso',
+                element: <ErrorIngreso/>
+            }
         ]
     )
     return rutas
