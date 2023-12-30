@@ -1,6 +1,21 @@
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import TablaFila from "../components/TablaFila"
+import TarjetaContext from "../context/TarjetaContext"
+
 
 const Balance = () => {
+  
+  
+
+  const {tarjetas} = useContext(TarjetaContext)
+
+  useEffect(() => {
+    document.title = 'Balance'
+    
+  }, [])
+
+
   return (
     <>
       <table>
@@ -12,6 +27,14 @@ const Balance = () => {
           </tr>
         </thead>
         <tbody>
+        {
+              
+              tarjetas && tarjetas.map( (producto, idx) => (
+                <TablaFila
+                  key={idx}
+                  producto={producto} />
+              ))
+          }
         </tbody>
       </table>
       <Link to="/operaciones">

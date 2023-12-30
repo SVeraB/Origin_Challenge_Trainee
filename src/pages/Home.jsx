@@ -4,34 +4,34 @@ import TecladoNumerico from "../components/TecladoNumerico"
 import Botonera from "../components/Botonera"
 
 const Home = () => {
-    const [value, setValue] = useState('')
+    const [numeroTarjeta, setNumeroTarjeta] = useState('')
+    const largoMaximoNumTarjeta = 16
 
     const editarValor = (numero) => {
-        const valorActual = value.split('-').join("")
-        {valorActual.length < 16 ? valorActual + numero : valorActual}
-        setValue(valorActual)
-        console.log(valorActual);
-        const nuevoValor =  ""
-        for (let i = 0; i < valorActual.length; i++) {
-            const element = valorActual[i];
-            console.log(i);
-            nuevoValor + element
-            if (i%4 === 0) {
-                nuevoValor + "-"
+
+        const largoActual = numeroTarjeta.split('-').join('').length
+
+        if(largoActual < largoMaximoNumTarjeta){
+
+            if(largoActual%4 === 0 && largoActual !== 0){
+                numero = '-' + numero
             }
-            
+            setNumeroTarjeta(numeroTarjeta + numero)
         }
-        /* setValue(nuevoValor) */
+
     }
+
+
     const vaciarValor = () => {
-        setValue('')
+        setNumeroTarjeta('')
     }
 
     return (
         <>
-            <Formulario value={value}/>
-            <TecladoNumerico editarValor={editarValor}/>
-            <Botonera vaciarValor={vaciarValor}/>
+            <Formulario value={numeroTarjeta} />
+            <TecladoNumerico editarValor={editarValor} />
+            <button>Aceptar</button>
+            <button onClick={vaciarValor}>Limpiar</button>
         </>
     )
 }
