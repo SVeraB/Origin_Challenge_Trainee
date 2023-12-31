@@ -11,6 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <TarjetaProvider>
     <BrowserRouter>
       <Rutas />
-    </BrowserRouter>,
+    </BrowserRouter>
   </TarjetaProvider>
 )

@@ -5,8 +5,10 @@ import Operaciones from "../pages/Operaciones"
 import Balance from "../pages/Balance"
 import Retiro from "../pages/Retiro"
 import ReporteOperaciones from "../pages/ReporteOperaciones"
-import ErrorIngreso from "../pages/ErrorIngreso"
-import BalanceUno from "../pages/BalanceUno"
+import ErrorTarjetaBloqueada from "../pages/ErrorTarjetaBloqueada"
+import ErrorNumeroMalIngresado from "../pages/ErrorNumeroMalIngresado"
+import ErrorPIN from "../pages/ErrorPIN"
+import ErrorMonto from "../pages/ErrorMonto"
 
 const Rutas = () => {
     const rutas = useRoutes(
@@ -36,12 +38,20 @@ const Rutas = () => {
                 element: <ReporteOperaciones/>
             },
             {
-                path: '/errorIngreso',
-                element: <ErrorIngreso/>
+                path: '/errorTarjetaBloqueada',
+                element: <ErrorTarjetaBloqueada/>
             },
             {
-                path: '/balanceUno',
-                element: <BalanceUno/>
+                path: '/errorNumeroMalIngresado',
+                element: <ErrorNumeroMalIngresado/>
+            },
+            {
+                path: '/errorPIN',
+                element: <ErrorPIN/>
+            },
+            {
+                path: '/errorMonto',
+                element: <ErrorMonto/>
             }
         ]
     )

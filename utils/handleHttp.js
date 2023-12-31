@@ -27,7 +27,7 @@ export const getOperaciones = async (url) => {
 }
 
 export const getUnaTarjeta = async (url, id) => {
-    console.log("URL GETCARD" + url + id)
+    console.log("URL GETCARD " + url + id)
     //const url = "http://localhost/tarjeta/{id}"
     try {
         const respuesta = await fetch(url + id)

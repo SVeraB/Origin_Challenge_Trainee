@@ -34,6 +34,7 @@ const Retiro = () => {
         }
 
         updateTarjeta(tarjetaActualizada)
+        
         const nuevaOperacion = {
           id: 6,
           numeroTarjeta: tarjetaUsuario.id,
@@ -45,6 +46,7 @@ const Retiro = () => {
         navigate('/reporteDeOperaciones');
 
       } else {
+        navigate('/errorMonto')
         console.log("El monto es invalido")
       }
     } catch (error) {

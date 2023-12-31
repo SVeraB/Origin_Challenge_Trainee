@@ -6,14 +6,14 @@ const TarjetaContext = createContext();
 const TarjetaProvider = ({ children }) => {
   const url_tarjetas = import.meta.env.VITE_URL_TARJETAS;
   const url_operaciones = import.meta.env.VITE_URL_OPERACIONES;
-  const idIngresado = '5555-5555-5555-5555';
+  //const idIngresado = '5555-5555-5555-5555';
 
   const [tarjetas, setTarjetas] = useState(null);
   const [operaciones, setOperaciones] = useState(null)
   const [operacionRealizada, setOperacionNueva] = useState(null)
   const [tarjetaUsuario, setTarjetaUsuario] = useState(null);
 
-  //const [idIngresado, setIdIngresado] = useState(null)
+  const [idIngresado, setIdIngresado] = useState(null)
 
   const getAllTarjetas = async () => {
     try {
@@ -51,7 +51,7 @@ const TarjetaProvider = ({ children }) => {
           await getAllTarjetas();
           getAllOperaciones()
           // getOneTarjeta se llamará después de getAllTarjetas
-          await getOneTarjeta();
+          //await getOneTarjeta();
         };
     
         fetchData();
@@ -86,8 +86,11 @@ const TarjetaProvider = ({ children }) => {
         tarjetas,
         tarjetaUsuario,
         operacionRealizada,
+        setIdIngresado,
+        setTarjetaUsuario,
         addOperacion,
-        updateTarjeta
+        updateTarjeta,
+        getOneTarjeta
       };
     return <TarjetaContext.Provider value={data}>{children}</TarjetaContext.Provider>
 }

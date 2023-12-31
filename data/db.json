@@ -1,64 +1,64 @@
 {
-    "tarjetas": [
-        {
-            "id": "1111-1111-1111-1111",
-            "PIN": "1111",
-            "fechaVencimiento": "12/08/2025",
-            "bloqueado": true,
-            "balance": 343.3
-        },
-        {
-            "id": "2222-1111-2222-1111",
-            "PIN": "2222",
-            "fechaVencimiento": "01/05/2026",
-            "bloqueado": false,
-            "balance": 1358
-        },
-        {
-            "id": "3333-1111-3333-1111",
-            "PIN": "3333",
-            "fechaVencimiento": "30/04/2027",
-            "bloqueado": false,
-            "balance": 10888
-        },
-        {
-            "id": "5555-5555-5555-5555",
-            "PIN": "5555",
-            "fechaVencimiento": "4/12/2027",
-            "bloqueado": false,
-            "balance": 58000
-        }
-    ],
-    "operaciones": [
-        {
-            "id": "1",
-            "numeroTarjeta": "5555-5555-5555-5555",
-            "fechaYHora": "29/07/2023 17:30",
-            "monto": 343.3
-        },
-        {
-            "id": "2",
-            "numeroTarjeta": "5555-5555-5555-5555",
-            "fechaYHora": "12/08/2023 18:00",
-            "monto": 5000
-        },
-        {
-            "id": "3",
-            "numeroTarjeta": "5555-5555-5555-5555",
-            "fechaYHora": "18/08/2023 13:50",
-            "monto": 5000
-        },
-        {
-            "id": "4",
-            "numeroTarjeta": "5555-5555-5555-5555",
-            "fechaYHora": "22/08/2025 10:30",
-            "monto": 3500
-        },
-        {
-            "id": "5",
-            "numeroTarjeta": "5555-5555-5555-5555",
-            "fechaYHora": "28/08/2025 09:30",
-            "monto": 6000
-        }
-    ]
+  "tarjetas": [
+    {
+      "id": "4444-1111-4444-1111",
+      "PIN": "1111",
+      "fechaVencimiento": "12/08/2025",
+      "bloqueado": true,
+      "balance": 343.3
+    },
+    {
+      "id": "2222-1111-2222-1111",
+      "PIN": "2222",
+      "fechaVencimiento": "01/05/2026",
+      "bloqueado": false,
+      "balance": 1358
+    },
+    {
+      "id": "3333-1111-3333-1111",
+      "PIN": "3333",
+      "fechaVencimiento": "30/04/2027",
+      "bloqueado": false,
+      "balance": 10888
+    },
+    {
+      "id": "5555-5555-5555-5555",
+      "PIN": "5555",
+      "fechaVencimiento": "4/12/2027",
+      "bloqueado":false,
+      "balance": 58000
+    }
+  ],
+  "operaciones": [
+    {
+      "id": "1",
+      "numeroTarjeta": "5555-5555-5555-5555",
+      "fechaYHora": "29/07/2023 17:30",
+      "monto": 343.3
+    },
+    {
+      "id": "2",
+      "numeroTarjeta": "5555-5555-5555-5555",
+      "fechaYHora": "12/08/2023 18:00",
+      "monto": 5000
+    },
+    {
+      "id": "3",
+      "numeroTarjeta": "5555-5555-5555-5555",
+      "fechaYHora": "18/08/2023 13:50",
+      "monto": 5000
+    },
+    {
+      "id": "4",
+      "numeroTarjeta": "5555-5555-5555-5555",
+      "fechaYHora": "22/08/2025 10:30",
+      "monto": 3500
+    },
+    {
+      "id": "5",
+      "numeroTarjeta": "5555-5555-5555-5555",
+      "fechaYHora": "28/08/2025 09:30",
+      "monto": 6000
+    }
+  ]
 }
