@@ -1,11 +1,12 @@
 import { useRoutes } from "react-router"
 import Home from "../pages/Home"
-import IngresarPin from "../pages/IngresarPin"
+import IngresarPin from "../pages/IngresarPIN"
 import Operaciones from "../pages/Operaciones"
 import Balance from "../pages/Balance"
 import Retiro from "../pages/Retiro"
 import ReporteOperaciones from "../pages/ReporteOperaciones"
 import ErrorIngreso from "../pages/ErrorIngreso"
+import BalanceUno from "../pages/BalanceUno"
 
 const Rutas = () => {
     const rutas = useRoutes(
@@ -37,6 +38,10 @@ const Rutas = () => {
             {
                 path: '/errorIngreso',
                 element: <ErrorIngreso/>
+            },
+            {
+                path: '/balanceUno',
+                element: <BalanceUno/>
             }
         ]
     )
