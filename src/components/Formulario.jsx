@@ -1,10 +1,10 @@
-const Formulario = ({ value }) => {
+const Formulario = ({ value, placeholder }) => {
     
     return (
         <>
-            <form action="">
-                <input type="text" defaultValue={value} disabled />
-            </form>
+            <div className="mb-3">
+                <input className="form-control" type="text" defaultValue={value} disabled placeholder={placeholder} />
+            </div>
         </>
     )
 }

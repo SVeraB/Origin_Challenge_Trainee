@@ -10,7 +10,10 @@ import { TarjetaProvider } from './context/TarjetaContext'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <TarjetaProvider>
     <BrowserRouter>
-      <Rutas />
+      <div className='container mt-3'>
+        <Rutas />
+      </div>
     </BrowserRouter>
+
   </TarjetaProvider>
 )

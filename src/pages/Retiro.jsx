@@ -1,30 +1,33 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import TarjetaContext from "../context/TarjetaContext"
+import { useNavigate } from "react-router";
+
 import Formulario from "../components/Formulario"
 import TecladoNumerico from "../components/TecladoNumerico"
-import Botonera from "../components/Botonera"
-import TarjetaContext from "../context/TarjetaContext"
-import { useNavigate } from 'react-router-dom';
+import BotonAceptar from "../components/BotonAceptar";
+import BotonLimpiar from "../components/BotonLimpiar";
+import BotonSalir from "../components/BotonSalir";
 
 const Retiro = () => {
+
+  useEffect(() => {
+    document.title = 'Retiro'
+  }, [])
 
   const { tarjetaUsuario, addOperacion, updateTarjeta } = useContext(TarjetaContext)
   const navigate = useNavigate();
 
-  const [monto, setmonto] = useState('')
+  const [monto, setMonto] = useState('')
 
   const editarValor = (numero) => {
-    setmonto(monto + numero)
+    setMonto(monto + numero)
   }
 
-  const vaciarValor = () => {
-    setmonto('')
-  }
-
-  const comprobarSiElMontoEsCorrecto = () => {
+  const comprobarMonto = () => {
     try {
       if (tarjetaUsuario.balance > parseInt(monto)) {
 
-        
+
         const tarjetaActualizada = {
           id: tarjetaUsuario.id,
           PIN: tarjetaUsuario.PIN,
@@ -34,7 +37,7 @@ const Retiro = () => {
         }
 
         updateTarjeta(tarjetaActualizada)
-        
+
         const nuevaOperacion = {
           id: 6,
           numeroTarjeta: tarjetaUsuario.id,
@@ -42,6 +45,7 @@ const Retiro = () => {
           monto: monto
 
         }
+        
         addOperacion(nuevaOperacion)
         navigate('/reporteDeOperaciones');
 
@@ -55,11 +59,11 @@ const Retiro = () => {
   }
   return (
     <>
-      <Formulario value={monto} />
+      <Formulario value={monto} placeholder={"Ingrese monto a retirar"} />
       <TecladoNumerico editarValor={editarValor} />
-      <button onClick={comprobarSiElMontoEsCorrecto}>Aceptar</button>
-      <button onClick={vaciarValor}>Limpiar</button>
-      <button>Salir</button>
+      <BotonAceptar handleRecibido={comprobarMonto} />
+      <BotonLimpiar handleRecibido={setMonto} />
+      <BotonSalir/>
     </>
   )
 }

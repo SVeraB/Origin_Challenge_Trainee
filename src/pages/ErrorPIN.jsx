@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom"
+import BotonAtras from "../components/BotonAtras"
 
 const ErrorPIN = () => {
     return (
-        <>
+        <div className="container">
             <h1>PIN mal ingresado</h1>
 
-            <Link to={'/ingresarPIN'}>
-                <button>Atras</button>
-            </Link>
-        </>
+            <BotonAtras link={'/ingresarPIN'} />
+        </div>
     )
 }
 

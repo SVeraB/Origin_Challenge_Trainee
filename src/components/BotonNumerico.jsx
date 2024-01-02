@@ -6,7 +6,7 @@ const BotonNumerico = ({numero, editarValor}) => {
 
     return (
         <>
-            <button onClick={handleClick}>{numero}</button>
+            <button className="col-1 btn btn-outline-secondary" onClick={handleClick}>{numero}</button>
         </>
     )
 }

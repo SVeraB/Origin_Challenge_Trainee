@@ -1,12 +1,18 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Formulario from "../components/Formulario"
 import TecladoNumerico from "../components/TecladoNumerico"
 import {getUnaTarjeta} from "../../utils/handleHttp.js";
 import { useNavigate } from 'react-router-dom';
 import TarjetaContext from "../context/TarjetaContext.jsx";
+import BotonAceptar from "../components/BotonAceptar.jsx";
+import BotonLimpiar from "../components/BotonLimpiar.jsx";
 
 
 const Home = () => {
+
+    useEffect(() => {
+        document.title = 'Home'
+      }, [])
 
     const [numeroTarjeta, setNumeroTarjeta] = useState('')
     const largoMaximoNumTarjeta = 16
@@ -34,9 +40,8 @@ const Home = () => {
         setNumeroTarjeta('')
     }
 
-    const checkIfCardIsValid = async () => {
+    const comprobarNumeroDeTarjeta = async () => {
         try {
-            console.log(numeroTarjeta);
             const response = await getUnaTarjeta(url_tarjetas, numeroTarjeta)
             setTarjetaUsuario(response)
 
@@ -61,10 +66,10 @@ const Home = () => {
 
     return (
         <>
-            <Formulario value={numeroTarjeta} />
+            <Formulario value={numeroTarjeta} placeholder={"Ingrese un número de tarjeta de 16 digitos"}/>
             <TecladoNumerico editarValor={editarValor} />
-            <button onClick={checkIfCardIsValid}>Aceptar</button>
-            <button onClick={vaciarValor}>Limpiar</button>
+            <BotonAceptar handleRecibido={comprobarNumeroDeTarjeta}/>
+            <BotonLimpiar handleRecibido={setNumeroTarjeta}/>
         </>
     )
 }

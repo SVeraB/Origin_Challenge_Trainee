@@ -1,35 +1,26 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import TarjetaContext from "../context/TarjetaContext"
+import BotonSalir from "../components/BotonSalir"
+import BotonAtras from "../components/BotonAtras"
 
 const ReporteOperaciones = () => {
 
   const { tarjetaUsuario, operacionRealizada } = useContext(TarjetaContext)
 
+
+  useEffect(() => {
+    document.title = 'Reporte de operaciones'
+  }, [])
+
   if (!operacionRealizada) {
     // Datos aún no disponibles, puedes mostrar un mensaje de carga o hacer algo más
     return <p>Cargando...</p>;
   }
-  //console.log('operacion realizada rep op',operacionRealizada);
-
-/* const tarjetaUsuario = {
-  id: "5555-5555-5555-5555",
-  PIN: "5555",
-  fechaVencimiento: "4/12/2027",
-  bloqueado: false,
-  balance: 50000
-} */
-/* const operacion = {
-  id: 6,
-  numeroTarjeta: "5555-5555-5555-5555",
-  fechaYHora: "30/12/2023 23:40",
-  monto: 8000
-
-} */
 
   return (
     <>
-      <table>
+      <table className="table table-info table-striped">
         <thead>
           <tr>
             <th scope="col">Número de Tarjeta</th>
@@ -48,10 +39,8 @@ const ReporteOperaciones = () => {
           </tr>
         </tbody>
       </table>
-      <Link to="/retiro">
-        <button>Atras</button>
-      </Link>
-      <button>Salir</button>
+      <BotonAtras link={'/retiro'} />
+      <BotonSalir/>
     </>
   )
 }

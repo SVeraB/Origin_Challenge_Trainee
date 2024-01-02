@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom"
+import BotonAtras from "../components/BotonAtras"
 
 const ErrorTarjetaBloqueada = () => {
   return (
-    <>
+    <div className="container">
         <h1>Tarjeta Bloqueada</h1>
-        <Link to={'/'}>
-            <button>Atras</button>
-        </Link>
-    </>
+        <BotonAtras link={'/'} />
+        
+    </div>
   )
 }
 

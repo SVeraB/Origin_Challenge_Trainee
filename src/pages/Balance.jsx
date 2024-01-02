@@ -1,24 +1,26 @@
-/* import { useContext, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import TablaFila from "../components/TablaFila"
-import TarjetaContext from "../context/TarjetaContext"
+import { useContext, useEffect } from 'react'
 
+import TablaFila from '../components/TablaFila'
+import TarjetaContext from '../context/TarjetaContext'
+import BotonAtras from '../components/BotonAtras'
+import BotonSalir from '../components/BotonSalir'
 
-const Balance = () => {
-  
-  
+const BalanceUno = () => {
 
-  const {tarjetas} = useContext(TarjetaContext)
+  const { tarjetaUsuario } = useContext(TarjetaContext)
 
   useEffect(() => {
     document.title = 'Balance'
-    
   }, [])
 
+  if (!tarjetaUsuario) {
+    // Datos aún no disponibles, puedes mostrar un mensaje de carga o hacer algo más
+    return <p>Cargando...</p>;
+  }
 
   return (
     <>
-      <table>
+      <table className='table table-info table-striped'>
         <thead>
           <tr>
             <th scope="col">Número de Tarjeta</th>
@@ -27,67 +29,14 @@ const Balance = () => {
           </tr>
         </thead>
         <tbody>
-        {
-              
-              tarjetas && tarjetas.map( (producto, idx) => (
-                <TablaFila
-                  key={idx}
-                  producto={producto} />
-              ))
-          }
+
+          <TablaFila producto={tarjetaUsuario} />
         </tbody>
       </table>
-      <Link to="/operaciones">
-        <button>Atras</button>
-      </Link>
-      <button>Salir</button>
+      <BotonAtras link={'/operaciones'} />
+      <BotonSalir/>
     </>
   )
 }
 
-export default Balance */
-
-
-
-import { useContext, useEffect } from 'react'
-import { Link } from "react-router-dom"
-import TablaFila from '../components/TablaFila'
-import TarjetaContext from '../context/TarjetaContext'
-
-const BalanceUno = () => {
-
-    const {tarjetaUsuario} = useContext(TarjetaContext)
-  
-    useEffect(() => {
-      document.title = 'Balance'
-    }, [])
-
-    if (!tarjetaUsuario) {
-        // Datos aún no disponibles, puedes mostrar un mensaje de carga o hacer algo más
-        return <p>Cargando...</p>;
-    }
-  
-    return (
-      <>
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Número de Tarjeta</th>
-              <th scope="col">Fecha de Vencimiento</th>
-              <th scope="col">Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <TablaFila producto={tarjetaUsuario}/>
-          </tbody>
-        </table>
-        <Link to="/operaciones">
-          <button>Atras</button>
-        </Link>
-        <button>Salir</button>
-      </>
-    )
-  }
-  
 export default BalanceUno

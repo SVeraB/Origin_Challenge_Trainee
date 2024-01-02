@@ -1,15 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import BotonAtras from '../components/BotonAtras'
 
 const ErrorNumeroMalIngresado = () => {
   return (
-    <>
-        <h1>Numero de Tarjeta mal ingresado</h1>
+    <div className="container">
+      <h1>Numero de Tarjeta mal ingresado</h1>
 
-        <Link to={'/'}>
-            <button>Atras</button>
-        </Link>
-    </>
+      <BotonAtras link={'/'}/>
+
+
+    </div>
   )
 }
 

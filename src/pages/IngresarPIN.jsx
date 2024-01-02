@@ -1,15 +1,24 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom';
+
 import Formulario from "../components/Formulario"
 import TecladoNumerico from "../components/TecladoNumerico"
 import TarjetaContext from "../context/TarjetaContext"
-import { useNavigate } from 'react-router-dom';
+import BotonAceptar from "../components/BotonAceptar";
+import BotonLimpiar from "../components/BotonLimpiar";
+import BotonSalir from "../components/BotonSalir";
+
 
 const IngresarPin = () => {
 
-    const { tarjetaUsuario, updateTarjeta } = useContext(TarjetaContext)
+    useEffect(() => {
+        document.title = 'Ingresar PIN'
+    }, [])
+
+    const { tarjetaUsuario, updateTarjeta, contador, setContador } = useContext(TarjetaContext)
 
     const [PIN, setPIN] = useState('')
-    const [cantidadDeErrores, setCantidad] = useState(0)
+
     const navigate = useNavigate();
 
     const editarValor = (numero) => {
@@ -18,48 +27,31 @@ const IngresarPin = () => {
         }
     }
 
-    const vaciarValor = () => {
-        setPIN('')
-    }
+    const comprobarPIN = () => {
 
-    const checkIfPINIsValid = async () => {
-        try {
-
-            if (tarjetaUsuario.PIN !== PIN) {
-                console.log("El PIN es invalido")
-
-                setCantidad(cantidadDeErrores + 1)
-                if (cantidadDeErrores === 4) {
-                    const tarjetaActualizada = {
-                        id: tarjetaUsuario.id,
-                        PIN: tarjetaUsuario.PIN,
-                        fechaVencimiento: tarjetaUsuario.fechaVencimiento,
-                        bloqueado: true,
-                        balance: tarjetaUsuario.balance
-                    }
-                    setCantidad(0)
-                    updateTarjeta(tarjetaActualizada)
-                    navigate('/errorTarjetaBloqueada')
-                }
+        if (tarjetaUsuario.PIN !== PIN) {
+            console.log("El PIN es invalido")
+            setContador(contador + 1)
+            console.log(contador);
+            if (contador === 4) {
+                setContador(0)
+                //actualizar db
+                navigate('/errorTarjetaBloqueada')
+            } else {
                 navigate('/errorPIN')
-            }else{
-                navigate('/operaciones');
             }
-
-            
-
-        } catch (error) {
-            console.error('Error al consultar el endpoint:', error);
+        } else {
+            navigate('/operaciones');
         }
     }
 
     return (
         <>
-            <Formulario value={PIN} />
+            <Formulario value={PIN} placeholder={"Ingresar PIN"} />
             <TecladoNumerico editarValor={editarValor} />
-            <button onClick={checkIfPINIsValid}>Aceptar</button>
-            <button onClick={vaciarValor}>Limpiar</button>
-            <button>Salir</button>
+            <BotonAceptar handleRecibido={comprobarPIN} />
+            <BotonLimpiar handleRecibido={setPIN} />
+            <BotonSalir/>
         </>
     )
 }
