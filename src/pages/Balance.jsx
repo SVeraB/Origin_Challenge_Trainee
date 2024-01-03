@@ -14,7 +14,7 @@ const BalanceUno = () => {
   }, [])
 
   if (!tarjetaUsuario) {
-    // Datos aún no disponibles, puedes mostrar un mensaje de carga o hacer algo más
+
     return <p>Cargando...</p>;
   }
 

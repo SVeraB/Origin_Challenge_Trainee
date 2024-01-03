@@ -1,24 +1,24 @@
 {
   "tarjetas": [
     {
-      "id": "4444-1111-4444-1111",
+      "id": "1111-1111-1111-1111",
       "PIN": "1111",
       "fechaVencimiento": "12/08/2025",
       "bloqueado": true,
       "balance": 343.3
     },
     {
-      "id": "2222-1111-2222-1111",
+      "id": "2222-2222-2222-2222",
       "PIN": "2222",
       "fechaVencimiento": "01/05/2026",
       "bloqueado": false,
       "balance": 1358
     },
     {
-      "id": "3333-1111-3333-1111",
+      "id": "3333-3333-3333-3333",
       "PIN": "3333",
       "fechaVencimiento": "30/04/2027",
-      "bloqueado": false,
+      "bloqueado": true,
       "balance": 10888
     },
     {

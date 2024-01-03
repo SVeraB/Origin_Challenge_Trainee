@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom';
+
 import Formulario from "../components/Formulario"
 import TecladoNumerico from "../components/TecladoNumerico"
 import {getUnaTarjeta} from "../../utils/handleHttp.js";
-import { useNavigate } from 'react-router-dom';
 import TarjetaContext from "../context/TarjetaContext.jsx";
 import BotonAceptar from "../components/BotonAceptar.jsx";
 import BotonLimpiar from "../components/BotonLimpiar.jsx";
@@ -36,20 +37,10 @@ const Home = () => {
 
     }
 
-    const vaciarValor = () => {
-        setNumeroTarjeta('')
-    }
-
     const comprobarNumeroDeTarjeta = async () => {
         try {
             const response = await getUnaTarjeta(url_tarjetas, numeroTarjeta)
             setTarjetaUsuario(response)
-
-            //setIdIngresado(numeroTarjeta)
-            //getOneTarjeta()
-            //const response = tarjetaUsuario
-
-            console.log(response);
 
             if (response === undefined) {
                 navigate('/errorNumeroMalIngresado');
@@ -57,8 +48,9 @@ const Home = () => {
             } if(response.bloqueado) {
                 console.log("La tarjeta está bloqueada")
                 navigate('/errorTarjetaBloqueada')
+            }else{
+                navigate('/ingresarPIN')
             }
-            navigate('/ingresarPIN')
         } catch (error) {
             console.error('Error al consultar el endpoint:', error);
         }

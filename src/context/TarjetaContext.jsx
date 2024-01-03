@@ -29,10 +29,8 @@ const TarjetaProvider = ({ children }) => {
 
   const getAllTarjetas = async () => {
     try {
-      //console.log("Todas las tarjetas");
       const obtenerTarjetas = await getTarjetas(url_tarjetas);
       setTarjetas(obtenerTarjetas);
-      //console.log(obtenerTarjetas);
     } catch (error) {
       console.error('[getAllTarjetas]:', error);
     }
@@ -42,7 +40,6 @@ const TarjetaProvider = ({ children }) => {
     try {
       const obtenerOperaciones = await getOperaciones(url_operaciones)
       setOperaciones(obtenerOperaciones)
-      console.log(obtenerOperaciones);
     } catch (error) {
       console.error('[getAllOperaciones]:', error);
     }
@@ -50,7 +47,6 @@ const TarjetaProvider = ({ children }) => {
 
   const getOneTarjeta = async () => {
     try {
-      //console.log("Una tarjeta");
       const obtenerTarjeta = await getUnaTarjeta(url_tarjetas, idIngresado);
       setTarjetaUsuario(obtenerTarjeta);
     } catch (error) {
@@ -61,24 +57,19 @@ const TarjetaProvider = ({ children }) => {
 
 
   const updateTarjeta = async (tarjetaAEditar) => {
-    console.log("TARJETA EDITADA QUE LLEGA",tarjetaAEditar);
     const id = tarjetaAEditar.id
     const tarjetaEditada = await actualizarTarjeta(url_tarjetas, id, tarjetaAEditar)
     const nuevoEstado = tarjetas.map(tarjeta => (tarjeta.id === id) ? tarjetaEditada : tarjeta)
     setTarjetas(nuevoEstado)
     setTarjetaUsuario(tarjetaAEditar)
-    console.log('Nuevo db', nuevoEstado);
   }
 
 
   const addOperacion = async (nuevaOperacion) => {
 
     try {
-      // Petición
       const productoCreado = await createOperacion(url_operaciones, nuevaOperacion)
-      // Actualización del estado
       setOperaciones([...operaciones, productoCreado])
-      //console.log('Operacion realizada', productoCreado);
       setOperacionNueva(productoCreado)
     } catch (error) {
       console.error('[addOperacion]: Algo ocurrió', error)

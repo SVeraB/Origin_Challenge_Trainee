@@ -25,7 +25,7 @@ const Retiro = () => {
 
   const comprobarMonto = () => {
     try {
-      if (tarjetaUsuario.balance > parseInt(monto)) {
+      if (tarjetaUsuario.balance >= parseInt(monto)) {
 
 
         const tarjetaActualizada = {
